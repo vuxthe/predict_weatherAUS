@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .image {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Predict weather AUS</h1>
+    </div>
+
+    <form action="{{ url_for('predict') }}" method="post">
+        <label for="min_temp">Min temp</label>
+        <input name="minTemp" id="min_temp"><br><br>
+        <label for="max_temp">Max temp</label>
+        <input name="maxTemp" id="max_temp"><br><br>
+        <label for="rain_fall">Rain fall</label>
+        <input name="rainFall" id="rain_fall"><br><br>
+        <label for="WindGustSpeed">WindGustSpeed</label>
+        <input name="WindGustSpeed" id="WindGustSpeed"><br><br>
+        <label for="WindSpeed9am">WindSpeed9am</label>
+        <input name="WindSpeed9am" id="WindSpeed9am"><br><br>
+        <label for="WindSpeed3pm">WindSpeed3pm</label>
+        <input name="WindSpeed3pm" id="WindSpeed3pm"><br><br>
+        <label for="Humidity9am">Humidity9am</label>
+        <input name="Humidity9am" id="Humidity9am"><br><br>
+        <label for="Humidity3pm">Humidity3pm</label>
+        <input name="Humidity3pm" id="Humidity3pm"><br><br>
+        <label for="Pressure9am">Pressure9am</label>
+        <input name="Pressure9am" id="Pressure9am"><br><br>
+        <label for="Pressure3pm">Pressure3pm</label>
+        <input name="Pressure3pm" id="Pressure3pm"><br><br>
+        <label for="Temp3pm">Temp3pm</label>
+        <input name="Temp3pm" id="Temp3pm"><br><br>
+        <label for="RainToday">Rain today</label>
+        <select name="RainToday" id="RainToday">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+        <button>Predict</button><br><br>
+        {% if predict_text==0 %}
+            <img class="image" src="{{url_for('static', filename='nang.jpg')}}">
+        {% else %}
+            <img class="image" src="{{url_for('static', filename='mua.jpg')}}">
+        {{ predict_text }}
+        {% endif %}
+    </form>
+</body>
+</html>
